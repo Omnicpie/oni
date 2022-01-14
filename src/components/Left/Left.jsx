@@ -6,8 +6,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
-import MailIcon from "@mui/icons-material/Mail";
-import logo from "../../images/logo192.png";
+import Typography from "@mui/material/Typography";
+import ImageIcon from "@mui/icons-material/Image";
+import ListSubheader from "@mui/material/ListSubheader";
+import logo from "../../images/OniFans.png";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -27,34 +31,44 @@ export default function Left() {
     >
       <img
         src={logo}
+        alt="OniFans Logo"
         style={{ height: "50px", width: "auto", margin: "10px auto" }}
       ></img>
       <Divider />
       <List>
-        <ListItem button key={1}>
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Home"} />
-        </ListItem>
-        <ListItem button key={2}>
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Photosets"} />
-        </ListItem>
+        <Link to={"/"}>
+          <ListItem button key={1}>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Home"} />
+          </ListItem>
+        </Link>
+        <Link to={"/photosets"}>
+          <ListItem button key={2}>
+            <ListItemIcon>
+              <ImageIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Photosets"} />
+          </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              <MailIcon />
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListSubheader component="div" id="tags">
+          Admin
+        </ListSubheader>
       </List>
+      <a
+        href="https://github.com/OmnicPie/oni"
+        target={"_blank"}
+        style={{
+          margin: "auto auto 10px auto",
+          display: "flex",
+        }}
+      >
+        <GitHubIcon style={{ fontSize: "2rem" }} />
+      </a>
     </Drawer>
   );
 }
