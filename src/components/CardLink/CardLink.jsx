@@ -7,7 +7,7 @@ import { CardActionArea } from "@mui/material";
 
 const CardLink = ({ link, image, text }) => {
   return (
-    <Card sx={{ width: "400pt", maxHeight: "200pt", margin: "0 10px" }}>
+    <Card sx={{ minWidth: 300, maxHeight: "200pt", margin: "10px" }}>
       <CardActionArea href={link} sx={{ height: "100%" }}>
         <CardMedia
           component="img"

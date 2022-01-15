@@ -34,7 +34,7 @@ export default function Left() {
         alt="OniFans Logo"
         style={{ height: "50px", width: "auto", margin: "10px auto" }}
       ></img>
-      <Divider />
+      <Divider style={{ zIndex: 1 }} />
       <List>
         <Link to={"/"}>
           <ListItem button key={1}>
