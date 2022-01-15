@@ -45,3 +45,11 @@
   color: black;
   cursor: initial;
 }
+
+.react-horizontal-scrolling-menu--scroll-container {
+  scrollbar-width: none;
+}
+
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+  display: none;
+}
