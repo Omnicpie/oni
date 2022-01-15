@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/oni/static/css/main.daf3c8b3.css",
+    "main.js": "/oni/static/js/main.9d23804b.js",
+    "static/js/787.60cf3fa0.chunk.js": "/oni/static/js/787.60cf3fa0.chunk.js",
+    "static/media/OniFans.png": "/oni/static/media/OniFans.dea4cdd90f142b6e0e8c.png",
+    "static/media/nopixel.png": "/oni/static/media/nopixel.935c45ccc314ccdeb71e.png",
+    "index.html": "/oni/index.html",
+    "main.daf3c8b3.css.map": "/oni/static/css/main.daf3c8b3.css.map",
+    "main.9d23804b.js.map": "/oni/static/js/main.9d23804b.js.map",
+    "787.60cf3fa0.chunk.js.map": "/oni/static/js/787.60cf3fa0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.daf3c8b3.css",
+    "static/js/main.9d23804b.js"
+  ]
+}
