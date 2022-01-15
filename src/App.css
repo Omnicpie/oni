@@ -27,3 +27,21 @@
   max-height: 200pt;
   margin: 10px;
 }
+.arrow {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  right: 1%;
+  user-select: none;
+  border: 0;
+  background: none;
+}
+
+.arrow:hover {
+  color: #8f1796;
+}
+.arrow.disabled {
+  color: black;
+  cursor: initial;
+}
