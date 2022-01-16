@@ -53,3 +53,17 @@
 .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
   display: none;
 }
+
+.card-wrap-offset {
+  margin: 10px;
+}
+
+.modal-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal-left {
+  left: 1%;
+}
