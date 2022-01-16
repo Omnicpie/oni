@@ -6,7 +6,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
-import Typography from "@mui/material/Typography";
 import ImageIcon from "@mui/icons-material/Image";
 import ListSubheader from "@mui/material/ListSubheader";
 import logo from "../../images/OniFans.png";

@@ -1,9 +1,10 @@
 import "./App.css";
 import Left from "./components/Left/Left";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Photosets from "./components/Photosets/Photosets";
 import Home from "./components/Home/Home";
 import Photoset from "./components/Photoset/Photoset";
+import Models from "./components/Models/Models";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact index path={"/"} element={<Home />} />
           <Route exact path={"/photosets"} element={<Photosets />} />
           <Route exact path={"/photosets/:id"} element={<Photoset />} />
+          <Route exact path={"/models"} element={<Models />} />
         </Routes>
       </div>
     </Router>
