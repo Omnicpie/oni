@@ -8,7 +8,7 @@ import Models from "./components/Models/Models";
 
 function App() {
   return (
-    <Router basename={"oni"}>
+    <Router>
       <Left />
       <div className="container">
         <Routes>
