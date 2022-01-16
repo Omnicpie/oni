@@ -8,7 +8,7 @@ import Models from "./components/Models/Models";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <Left />
       <div className="container">
         <Routes>
