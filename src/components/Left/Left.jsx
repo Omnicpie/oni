@@ -58,6 +58,12 @@ export default function Left() {
         <ListSubheader component="div" id="tags">
           Admin
         </ListSubheader>
+
+        <Link to={"/models"}>
+          <ListItem button key={"admin-models"}>
+            <ListItemText primary={"Models"} />
+          </ListItem>
+        </Link>
       </List>
       <a
         href="https://github.com/OmnicPie/oni"
