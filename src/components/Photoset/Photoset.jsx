@@ -65,6 +65,8 @@ const itemData = [
   },
 ];
 
+const ROW_HEIGHT = 200;
+
 function srcset(image, size, rows = 1, cols = 1) {
   return {
     src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
@@ -94,7 +96,7 @@ const Photoset = () => {
         sx={{ margin: "100px", marginBottom: "0" }}
         variant="quilted"
         cols={4}
-        rowHeight={121}
+        rowHeight={ROW_HEIGHT}
       >
         {itemData.map((item, index) => (
           <ImageListItem
@@ -103,7 +105,7 @@ const Photoset = () => {
             rows={item.rows || 1}
           >
             <img
-              {...srcset(item.img, 121, item.rows, item.cols)}
+              {...srcset(item.img, ROW_HEIGHT, item.rows, item.cols)}
               alt={item.title}
               loading="lazy"
               onClick={() => setOpen(index)}
