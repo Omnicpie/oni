@@ -5,6 +5,7 @@ import Photosets from "./components/Photosets/Photosets";
 import Home from "./components/Home/Home";
 import Photoset from "./components/Photoset/Photoset";
 import Models from "./components/Models/Models";
+import Model from "./components/Model/Model";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path={"/photosets"} element={<Photosets />} />
           <Route exact path={"/photosets/:id"} element={<Photoset />} />
           <Route exact path={"/models"} element={<Models />} />
+          <Route exact path={"/models/:id"} element={<Model />} />
         </Routes>
       </div>
     </Router>

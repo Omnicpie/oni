@@ -9,12 +9,13 @@ import {
   Stack,
   Card,
   Divider,
+  Avatar,
 } from "@mui/material";
 import ImageModal from "../ImageModal/ImageModal";
 import { MODELS } from "../../__constants__/models";
 import CardMedia from "@mui/material/CardMedia";
 import defaultCardImage from "../../images/nopixel.png";
-import "./Photoset.scss";
+import { Translate } from "@mui/icons-material";
 
 const itemData = [
   {
@@ -88,13 +89,13 @@ function srcset(image, size, rows = 1, cols = 1) {
   };
 }
 
-const Photoset = () => {
+const Model = () => {
   const [set, setSet] = useState();
   const [open, setOpen] = useState(-1);
   let params = useParams();
 
   useEffect(() => {
-    setSet(PHOTOSETS.find((set) => set.id === Number(params.id)));
+    setSet(MODELS.find((set) => set.id === Number(params.id)));
   }, []);
 
   return (
@@ -106,52 +107,15 @@ const Photoset = () => {
           image={set?.image ? set?.image : defaultCardImage}
           sx={{ objectFit: "contain", maxHeight: "160pt" }}
         />
-        <Typography variant="h3" style={{ margin: "20px 0 10px 20px" }}>
+        <Avatar
+          sx={{ height: 100, width: 100, transform: "translate(0, -20%)" }}
+        />
+        <Typography variant="h3" style={{ marginLeft: "20px" }}>
           {set?.text}
         </Typography>
-        <Divider />
-        <div style={{ marginTop: "10px" }}>
-          <Typography variant="caption" style={{ margin: "10px 0 10px 20px" }}>
-            Model{set?.models.length > 1 ? "s" : ""}
-          </Typography>
-          <Stack direction={"row"} sx={{ margin: "10px 10px 10px 20px" }}>
-            {set?.models.map((model) => (
-              <Chip
-                color="secondary"
-                label={MODELS.find((mod) => mod.id === Number(model)).text}
-                component={"a"}
-                href={`/oni/#/models/${model}`}
-                clickable
-                sx={{ margin: "0 2px" }}
-              />
-            ))}
-          </Stack>
-        </div>
       </Card>
-      <ImageList
-        sx={{ margin: "100px", marginBottom: "0" }}
-        variant="quilted"
-        cols={4}
-        rowHeight={ROW_HEIGHT}
-      >
-        {itemData.map((item, index) => (
-          <ImageListItem
-            key={item.img}
-            cols={item.cols || 1}
-            rows={item.rows || 1}
-          >
-            <img
-              {...srcset(item.img, ROW_HEIGHT, item.rows, item.cols)}
-              alt={item.title}
-              loading="lazy"
-              onClick={() => setOpen(index)}
-              style={{ cursor: "pointer" }}
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
     </>
   );
 };
 
-export default Photoset;
+export default Model;

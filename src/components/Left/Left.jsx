@@ -67,6 +67,7 @@ export default function Left() {
       <a
         href="https://github.com/OmnicPie/oni"
         target={"_blank"}
+        rel="noreferrer"
         style={{
           margin: "auto auto 10px auto",
           display: "flex",
