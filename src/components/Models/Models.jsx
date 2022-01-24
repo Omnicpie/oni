@@ -17,7 +17,7 @@ const Models = () => {
             itemId={model.id}
             text={model.text}
             image={model.image ? model.image : defaultCardImage}
-            link={`/models}/${model.id}`}
+            link={`/models/${model.id}`}
             extra="float-left"
           />
         ))}
