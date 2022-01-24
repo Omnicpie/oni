@@ -67,3 +67,7 @@
 .modal-left {
   left: 1%;
 }
+
+.float-left {
+  float: left;
+}

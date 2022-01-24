@@ -5,9 +5,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-const CardLink = ({ link, image, text }) => {
+const CardLink = ({ link, image, text, extra = "" }) => {
   return (
-    <Card sx={{ minWidth: 300, maxHeight: "200pt", margin: "10px" }}>
+    <Card
+      sx={{ minWidth: 300, maxHeight: "200pt", margin: "10px" }}
+      className={extra}
+    >
       <CardActionArea href={"/oni/#" + link} sx={{ height: "100%" }}>
         <CardMedia
           component="img"
