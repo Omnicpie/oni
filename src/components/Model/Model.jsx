@@ -16,6 +16,11 @@ import { MODELS } from "../../__constants__/models";
 import CardMedia from "@mui/material/CardMedia";
 import defaultCardImage from "../../images/nopixel.png";
 import { Translate } from "@mui/icons-material";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import Box from "@mui/material/Box";
 
 const itemData = [
   {
@@ -92,11 +97,16 @@ function srcset(image, size, rows = 1, cols = 1) {
 const Model = () => {
   const [set, setSet] = useState();
   const [open, setOpen] = useState(-1);
+  const [value, setValue] = useState("1");
   let params = useParams();
 
   useEffect(() => {
     setSet(MODELS.find((set) => set.id === Number(params.id)));
   }, []);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <>
@@ -108,12 +118,29 @@ const Model = () => {
           sx={{ objectFit: "contain", maxHeight: "160pt" }}
         />
         <Avatar
-          sx={{ height: 100, width: 100, transform: "translate(0, -20%)" }}
+          sx={{ height: 100, width: 100, transform: "translate(10%, -50%)" }}
         />
-        <Typography variant="h3" style={{ marginLeft: "20px" }}>
+        <Typography
+          variant="h3"
+          style={{
+            transform: "translate(5%, -70%)",
+          }}
+        >
           {set?.text}
         </Typography>
       </Card>
+      <div style={{ margin: "15px" }}>
+        <TabContext value={value}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <TabList onChange={handleChange} aria-label="lab API tabs example">
+              <Tab label="Photosets" value="1" />
+              <Tab label="Merch" value="2" />
+            </TabList>
+          </Box>
+          <TabPanel value="1">Item One</TabPanel>
+          <TabPanel value="2">Item Two</TabPanel>
+        </TabContext>
+      </div>
     </>
   );
 };
