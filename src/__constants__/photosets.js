@@ -4,7 +4,7 @@ export const PHOTOSETS = [
   { id: 3, text: "Boss's Orders ", models: [1] },
   { id: 4, text: "Egg", models: [2] },
   { id: 5, text: "example" },
-  { id: 6, text: "exmaple" },
+  { id: 6, text: "Femly Matters", models: [1, 10] },
   { id: 7, text: "exmaple" },
   { id: 8, text: "exmaple" },
   { id: 9, text: "exmaple" },

@@ -30,8 +30,6 @@ function srcset(image, size, rows = 1, cols = 1) {
 
 function ImageModal({ imageIndex, setOpen, set }) {
   let open = imageIndex !== -1 ? true : false;
-  console.log(set);
-  console.log(imageIndex);
   return (
     <Modal
       aria-labelledby="transition-modal-title"

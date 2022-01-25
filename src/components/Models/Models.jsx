@@ -14,6 +14,7 @@ const Models = () => {
       <div style={{ marginTop: "15px", marginLeft: "15pt" }}>
         {MODELS.map((model) => (
           <CardLink
+            key={model.id}
             itemId={model.id}
             text={model.text}
             image={model.image ? model.image : defaultCardImage}

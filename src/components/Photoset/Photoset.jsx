@@ -95,7 +95,7 @@ const Photoset = () => {
 
   useEffect(() => {
     setSet(PHOTOSETS.find((set) => set.id === Number(params.id)));
-  }, []);
+  }, [params.id]);
 
   return (
     <>
@@ -117,6 +117,7 @@ const Photoset = () => {
           <Stack direction={"row"} sx={{ margin: "10px 10px 10px 20px" }}>
             {set?.models.map((model) => (
               <Chip
+                key={model}
                 color="secondary"
                 label={MODELS.find((mod) => mod.id === Number(model)).text}
                 component={"a"}

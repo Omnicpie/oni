@@ -1,26 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PHOTOSETS } from "../../__constants__/photosets";
-import {
-  Typography,
-  ImageListItem,
-  ImageList,
-  Chip,
-  Stack,
-  Card,
-  Divider,
-  Avatar,
-} from "@mui/material";
+import { Typography, Card, Avatar } from "@mui/material";
 import ImageModal from "../ImageModal/ImageModal";
 import { MODELS } from "../../__constants__/models";
 import CardMedia from "@mui/material/CardMedia";
 import defaultCardImage from "../../images/nopixel.png";
-import { Translate } from "@mui/icons-material";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Box from "@mui/material/Box";
+import Photosets from "./subComponents/Photosets/Photosets";
 
 const itemData = [
   {
@@ -83,17 +73,6 @@ const itemData = [
   },
 ];
 
-const ROW_HEIGHT = 200;
-
-function srcset(image, size, rows = 1, cols = 1) {
-  return {
-    src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
-    srcSet: `${image}?w=${size * cols}&h=${
-      size * rows
-    }&fit=crop&auto=format&dpr=2 2x`,
-  };
-}
-
 const Model = () => {
   const [set, setSet] = useState();
   const [open, setOpen] = useState(-1);
@@ -102,7 +81,7 @@ const Model = () => {
 
   useEffect(() => {
     setSet(MODELS.find((set) => set.id === Number(params.id)));
-  }, []);
+  }, [params.id]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -137,7 +116,9 @@ const Model = () => {
               <Tab label="Merch" value="2" />
             </TabList>
           </Box>
-          <TabPanel value="1">Item One</TabPanel>
+          <TabPanel value="1">
+            <Photosets model={params.id} />
+          </TabPanel>
           <TabPanel value="2">Item Two</TabPanel>
         </TabContext>
       </div>

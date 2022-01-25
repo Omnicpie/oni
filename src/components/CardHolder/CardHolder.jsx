@@ -36,6 +36,7 @@ const CardHolder = ({ items, base }) => {
     >
       {items.map(({ id, text, image }) => (
         <CardLink
+          key={id}
           itemId={id}
           text={text}
           image={image ? image : defaultCardImage}
