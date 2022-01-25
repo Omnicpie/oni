@@ -11,6 +11,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Box from "@mui/material/Box";
 import Photosets from "./subComponents/Photosets/Photosets";
+import Merch from "./subComponents/Merch/Merch";
 
 const itemData = [
   {
@@ -124,7 +125,9 @@ const Model = () => {
           <TabPanel value="1">
             <Photosets model={params.id} />
           </TabPanel>
-          <TabPanel value="2">Item Two</TabPanel>
+          <TabPanel value="2">
+            <Merch model={params.id} />
+          </TabPanel>
         </TabContext>
       </div>
     </>

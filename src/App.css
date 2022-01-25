@@ -71,3 +71,11 @@
 .float-left {
   float: left;
 }
+
+.ahh p {
+  color: black !important;
+}
+
+.ahhact p {
+  color: red !important;
+}
