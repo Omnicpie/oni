@@ -111,7 +111,12 @@ const Model = () => {
       <div style={{ margin: "15px" }}>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <TabList
+              onChange={handleChange}
+              aria-label="model tabs"
+              textColor="secondary"
+              indicatorColor="secondary"
+            >
               <Tab label="Photosets" value="1" />
               <Tab label="Merch" value="2" />
             </TabList>
