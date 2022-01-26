@@ -10,6 +10,7 @@ import Merch from "./components/Merch/Merch";
 import Profile from "./components/Profile/Profile";
 import { useState } from "react";
 import Staff from "./components/Staff/Staff";
+import Transactions from "./components/Transactions/Transations";
 
 function App() {
   const [roles, setRoles] = useState(["admin", "model"]);
@@ -30,6 +31,7 @@ function App() {
             element={<Profile roles={roles} setRoles={setRoles} />}
           />
           <Route exact path={"/staff"} element={<Staff />} />
+          <Route exact path={"/transactions"} element={<Transactions />} />
         </Routes>
       </div>
     </Router>

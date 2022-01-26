@@ -109,15 +109,15 @@ const Photoset = () => {
         <Typography variant="h3" sx={{ margin: "30px" }}>
           {set?.text}
         </Typography>
-        {!!set.models && (
+        {!!set?.models && (
           <>
             <Divider />
             <div style={{ marginTop: "10px" }}>
               <Typography variant="caption" sx={{ margin: "30px" }}>
-                Model{set?.models.length > 1 ? "s" : ""}
+                Model{set?.models?.length > 1 ? "s" : ""}
               </Typography>
               <Stack direction={"row"} sx={{ margin: "10px 10px 10px 20px" }}>
-                {set?.models.map((model) => (
+                {set?.models?.map((model) => (
                   <Chip
                     key={model}
                     color="secondary"

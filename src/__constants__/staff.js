@@ -8,14 +8,6 @@ export const STAFF = [
     importance: 0,
   },
   {
-    id: 16,
-    name: "Karina Dawn",
-    title: "FTO",
-    isAdmin: true,
-    isModel: false,
-    importance: 1,
-  },
-  {
     id: 2,
     name: "Ai Musori",
     title: "Model",
@@ -128,7 +120,15 @@ export const STAFF = [
     importance: 5,
   },
   {
-    id: 1,
+    id: 16,
+    name: "Karina Dawn",
+    title: "FTO",
+    isAdmin: true,
+    isModel: false,
+    importance: 1,
+  },
+  {
+    id: 17,
     name: "A Staff Member",
     title: "HR Manager",
     isAdmin: true,
@@ -136,7 +136,7 @@ export const STAFF = [
     importance: 4,
   },
   {
-    id: 1,
+    id: 18,
     name: "PERSON",
     title: "HR Manager",
     isAdmin: true,
@@ -144,7 +144,7 @@ export const STAFF = [
     importance: 4,
   },
   {
-    id: 1,
+    id: 19,
     name: "Jay Que",
     title: "Cleaner",
     isAdmin: false,
@@ -152,7 +152,7 @@ export const STAFF = [
     importance: 3.9,
   },
   {
-    id: 1,
+    id: 20,
     name: "Octavio Stenberg",
     title: "Head Photographer",
     isAdmin: false,
@@ -160,7 +160,7 @@ export const STAFF = [
     importance: 3,
   },
   {
-    id: 1,
+    id: 21,
     name: "A Staff Member",
     title: "Grunt",
     isAdmin: false,
@@ -168,7 +168,7 @@ export const STAFF = [
     importance: 6,
   },
   {
-    id: 1,
+    id: 22,
     name: "A Staff Member",
     title: "Grunt",
     isAdmin: false,
@@ -176,7 +176,7 @@ export const STAFF = [
     importance: 6,
   },
   {
-    id: 1,
+    id: 23,
     name: "A Staff Member",
     title: "Grunt",
     isAdmin: false,
@@ -184,7 +184,7 @@ export const STAFF = [
     importance: 6,
   },
   {
-    id: 1,
+    id: 24,
     name: "A Staff Member",
     title: "Grunt",
     isAdmin: false,
@@ -192,7 +192,7 @@ export const STAFF = [
     importance: 6,
   },
   {
-    id: 1,
+    id: 25,
     name: "A Staff Member",
     title: "Grunt",
     isAdmin: false,
@@ -200,7 +200,7 @@ export const STAFF = [
     importance: 6,
   },
   {
-    id: 1,
+    id: 26,
     name: "A Staff Member",
     title: "Grunt",
     isAdmin: false,
@@ -208,7 +208,7 @@ export const STAFF = [
     importance: 6,
   },
   {
-    id: 1,
+    id: 27,
     name: "A Staff Member",
     title: "Grunt",
     isAdmin: false,

@@ -91,6 +91,11 @@ export default function Left({ roles }) {
                 <ListItemText primary={"Staff"} />
               </ListItem>
             </Link>
+            <Link to={"/transactions"}>
+              <ListItem button key={"admin-transactions"}>
+                <ListItemText primary={"Transactions"} />
+              </ListItem>
+            </Link>
           </List>
           <Divider />
         </>
