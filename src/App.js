@@ -7,13 +7,15 @@ import Photoset from "./components/Photoset/Photoset";
 import Models from "./components/Models/Models";
 import Model from "./components/Model/Model";
 import Merch from "./components/Merch/Merch";
+import Profile from "./components/Profile/Profile";
 import { useState } from "react";
+import Staff from "./components/Staff/Staff";
 
 function App() {
-  const [role, setRole] = useState("admin");
+  const [roles, setRoles] = useState(["admin", "model"]);
   return (
     <Router basename="/">
-      <Left role={role} setRole={setRole} />
+      <Left roles={roles} />
       <div className="container">
         <Routes>
           <Route exact index path={"/"} element={<Home />} />
@@ -22,6 +24,12 @@ function App() {
           <Route exact path={"/models"} element={<Models />} />
           <Route exact path={"/models/:id"} element={<Model />} />
           <Route exact path={"/merch"} element={<Merch />} />
+          <Route
+            exact
+            path={"/profile"}
+            element={<Profile roles={roles} setRoles={setRoles} />}
+          />
+          <Route exact path={"/staff"} element={<Staff />} />
         </Routes>
       </div>
     </Router>

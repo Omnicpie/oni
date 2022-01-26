@@ -1,11 +1,18 @@
+import { Card } from "@mui/material";
 import React from "react";
+import defaultCardImage from "../../images/nopixel.png";
 
 const MerchItem = ({ item }) => {
   return (
-    <div>
-      <h1>{item.name}</h1>
-      <h3>Quantity: {item.quantity}</h3>
-    </div>
+    <Card sx={{ margin: "30px", padding: "10px 30px", display: "flex" }}>
+      <div style={{ marginRight: "30px" }}>
+        <img src={defaultCardImage} alt="item" />
+      </div>
+      <div style={{ paddingTop: "10px" }}>
+        <h2>{item.name}</h2>
+        <p>Quantity: {item.quantity}</p>
+      </div>
+    </Card>
   );
 };
 

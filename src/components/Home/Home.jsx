@@ -6,13 +6,13 @@ import { PHOTOSETS } from "../../__constants__/photosets";
 const Home = () => {
   return (
     <>
-      <Typography variant="h4" style={{ marginTop: "20px" }}>
+      <Typography variant="h4" style={{ margin: "30px" }}>
         Popular Photosets
       </Typography>
       <Divider sx={{ marginBottom: 2 }} />
       <CardHolder items={PHOTOSETS} base={"photosets"} />
 
-      <Typography variant="h4" style={{ marginTop: "40px" }}>
+      <Typography variant="h4" style={{ margin: "30px" }}>
         Popular Models
       </Typography>
       <Divider sx={{ marginBottom: 2 }} />

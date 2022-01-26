@@ -106,28 +106,32 @@ const Photoset = () => {
           image={set?.image ? set?.image : defaultCardImage}
           sx={{ objectFit: "contain", maxHeight: "160pt" }}
         />
-        <Typography variant="h3" style={{ margin: "20px 0 10px 20px" }}>
+        <Typography variant="h3" sx={{ margin: "30px" }}>
           {set?.text}
         </Typography>
-        <Divider />
-        <div style={{ marginTop: "10px" }}>
-          <Typography variant="caption" style={{ margin: "10px 0 10px 20px" }}>
-            Model{set?.models.length > 1 ? "s" : ""}
-          </Typography>
-          <Stack direction={"row"} sx={{ margin: "10px 10px 10px 20px" }}>
-            {set?.models.map((model) => (
-              <Chip
-                key={model}
-                color="secondary"
-                label={MODELS.find((mod) => mod.id === Number(model)).text}
-                component={"a"}
-                href={`/oni/#/models/${model}`}
-                clickable
-                sx={{ margin: "0 2px" }}
-              />
-            ))}
-          </Stack>
-        </div>
+        {!!set.models && (
+          <>
+            <Divider />
+            <div style={{ marginTop: "10px" }}>
+              <Typography variant="caption" sx={{ margin: "30px" }}>
+                Model{set?.models.length > 1 ? "s" : ""}
+              </Typography>
+              <Stack direction={"row"} sx={{ margin: "10px 10px 10px 20px" }}>
+                {set?.models.map((model) => (
+                  <Chip
+                    key={model}
+                    color="secondary"
+                    label={MODELS.find((mod) => mod.id === Number(model)).text}
+                    component={"a"}
+                    href={`/oni/#/models/${model}`}
+                    clickable
+                    sx={{ margin: "0 2px" }}
+                  />
+                ))}
+              </Stack>
+            </div>
+          </>
+        )}
       </Card>
       <ImageList
         sx={{ margin: "100px", marginBottom: "0" }}
@@ -135,7 +139,7 @@ const Photoset = () => {
         cols={4}
         rowHeight={ROW_HEIGHT}
       >
-        {itemData.map((item, index) => (
+        {itemData?.map((item, index) => (
           <ImageListItem
             key={item.img}
             cols={item.cols || 1}

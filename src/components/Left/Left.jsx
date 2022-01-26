@@ -16,7 +16,7 @@ import defaultCardImage from "../../images/nopixel.png";
 
 const drawerWidth = 240;
 
-export default function Left({ role, setRole }) {
+export default function Left({ roles }) {
   return (
     <Drawer
       sx={{
@@ -55,7 +55,22 @@ export default function Left({ role, setRole }) {
         </Link>
       </List>
       <Divider />
-      {role === "admin" && (
+      {roles.includes("model") && (
+        <>
+          <List>
+            <ListSubheader component="div" id="tags">
+              Model
+            </ListSubheader>
+            <Link to={"/models/1"}>
+              <ListItem button key={"model-acc"}>
+                <ListItemText primary={"Public Page"} />
+              </ListItem>
+            </Link>
+          </List>
+          <Divider />
+        </>
+      )}
+      {roles.includes("admin") && (
         <>
           <List>
             <ListSubheader component="div" id="tags">
@@ -71,33 +86,15 @@ export default function Left({ role, setRole }) {
                 <ListItemText primary={"All Merch"} />
               </ListItem>
             </Link>
+            <Link to={"/staff"}>
+              <ListItem button key={"admin-staff"}>
+                <ListItemText primary={"Staff"} />
+              </ListItem>
+            </Link>
           </List>
           <Divider />
         </>
       )}
-      <List>
-        <ListSubheader component="div" id="tags">
-          User Role
-        </ListSubheader>
-        <ListItem button key={"role-user"} onClick={() => setRole("user")}>
-          <ListItemText
-            secondary={"User"}
-            className={role === "user" ? "ahhact" : "ahh"}
-          />
-        </ListItem>
-        <ListItem button key={"role-model"} onClick={() => setRole("model")}>
-          <ListItemText
-            secondary={"Model"}
-            className={role === "model" ? "ahhact" : "ahh"}
-          />
-        </ListItem>
-        <ListItem button key={"role-admin"} onClick={() => setRole("admin")}>
-          <ListItemText
-            secondary={"Admin"}
-            className={role === "admin" ? "ahhact" : "ahh"}
-          />
-        </ListItem>
-      </List>
       <a
         href="https://github.com/OmnicPie/oni"
         target={"_blank"}
@@ -109,14 +106,17 @@ export default function Left({ role, setRole }) {
       >
         <GitHubIcon style={{ fontSize: "2rem" }} />
       </a>
-      <ListItem button key={"role-admin"}>
-        <ListItemAvatar>
-          <Avatar src={defaultCardImage} />
-        </ListItemAvatar>
-        <ListItemText primary="Mayumi Himura" />
-      </ListItem>
       <Divider />
-      <ListItem button key={"role-admin"} onClick={() => setRole("admin")}>
+      <Link to={"/profile"}>
+        <ListItem button key={"profile"}>
+          <ListItemAvatar>
+            <Avatar src={defaultCardImage} />
+          </ListItemAvatar>
+          <ListItemText primary="Mayumi Himura" />
+        </ListItem>
+      </Link>
+      <Divider />
+      <ListItem key={"logout"}>
         <ListItemText primary="Logout" sx={{ textAlign: "center" }} />
       </ListItem>
     </Drawer>

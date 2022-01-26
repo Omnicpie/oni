@@ -12,6 +12,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import Box from "@mui/material/Box";
 import Photosets from "./subComponents/Photosets/Photosets";
 import Merch from "./subComponents/Merch/Merch";
+import { Button } from "@mui/material";
 
 const itemData = [
   {
@@ -123,6 +124,15 @@ const Model = () => {
             </TabList>
           </Box>
           <TabPanel value="1">
+            {Number(params.id) === 1 && (
+              <Button
+                variant="contained"
+                color="secondary"
+                sx={{ display: "block", marginBottom: "10px" }}
+              >
+                Add Set
+              </Button>
+            )}
             <Photosets model={params.id} />
           </TabPanel>
           <TabPanel value="2">
