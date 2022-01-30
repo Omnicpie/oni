@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PHOTOSETS } from "../../__constants__/photosets";
+import { PHOTOSETS, MY_PHOTOSETS } from "../../__constants__/photosets";
 import {
   Typography,
   ImageListItem,
@@ -91,10 +91,17 @@ function srcset(image, size, rows = 1, cols = 1) {
 const Photoset = () => {
   const [set, setSet] = useState();
   const [open, setOpen] = useState(-1);
+  const [owned, setOwned] = useState(false);
   let params = useParams();
 
   useEffect(() => {
     setSet(PHOTOSETS.find((set) => set.id === Number(params.id)));
+    setOwned(
+      !!MY_PHOTOSETS.find(
+        (item) =>
+          PHOTOSETS.find((set) => set.id === Number(params.id)).id === item.id
+      )
+    );
   }, [params.id]);
 
   return (
@@ -139,21 +146,25 @@ const Photoset = () => {
         cols={4}
         rowHeight={ROW_HEIGHT}
       >
-        {itemData?.map((item, index) => (
-          <ImageListItem
-            key={item.img}
-            cols={item.cols || 1}
-            rows={item.rows || 1}
-          >
-            <img
-              {...srcset(item.img, ROW_HEIGHT, item.rows, item.cols)}
-              alt={item.title}
-              loading="lazy"
-              onClick={() => setOpen(index)}
-              style={{ cursor: "pointer" }}
-            />
-          </ImageListItem>
-        ))}
+        {owned ? (
+          itemData?.map((item, index) => (
+            <ImageListItem
+              key={item.img}
+              cols={item.cols || 1}
+              rows={item.rows || 1}
+            >
+              <img
+                {...srcset(item.img, ROW_HEIGHT, item.rows, item.cols)}
+                alt={item.title}
+                loading="lazy"
+                onClick={() => setOpen(index)}
+                style={{ cursor: "pointer", opacity: "0.2" }}
+              />
+            </ImageListItem>
+          ))
+        ) : (
+          <>You Must own this content to view!</>
+        )}
       </ImageList>
     </>
   );

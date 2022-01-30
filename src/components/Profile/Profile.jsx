@@ -99,7 +99,7 @@ const Profile = ({ mode, setMode, roles, setRoles }) => {
           bottom: "10px",
         }}
       >
-        Version: 1.5
+        Version: 1.5.1
       </span>
     </>
   );
