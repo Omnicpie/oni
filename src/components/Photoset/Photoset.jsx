@@ -9,6 +9,8 @@ import {
   Stack,
   Card,
   Divider,
+  Container,
+  Button,
 } from "@mui/material";
 import ImageModal from "../ImageModal/ImageModal";
 import { MODELS } from "../../__constants__/models";
@@ -88,7 +90,7 @@ function srcset(image, size, rows = 1, cols = 1) {
   };
 }
 
-const Photoset = ({ setAllowScroll }) => {
+const Photoset = ({ setAllowScroll, mode }) => {
   const [set, setSet] = useState();
   const [open, setOpen] = useState(-1);
   const [owned, setOwned] = useState(false);
@@ -187,6 +189,35 @@ const Photoset = ({ setAllowScroll }) => {
               </ImageListItem>
             ))}
       </ImageList>
+      {owned ? null : (
+        <Container
+          style={{
+            position: "fixed",
+            bottom: 0,
+            width: "calc(100vw - 240px)",
+            height: "100pt",
+            justifyContent: "space-evenly",
+            display: "flex",
+            maxWidth: "none",
+            background: mode === "light" ? "#f7f7f7" : "#111111",
+            paddingTop: "10px",
+            boxShadow:
+              "-1px 1px 2px 0px rgb(0 0 0 / 20%), 1px 0px 0px 1px rgb(0 0 0 / 14%), 3px 1px 3px 1px rgb(0 0 0 / 12%)",
+            flexDirection: "column",
+          }}
+        >
+          <span style={{ width: "fit-content", margin: "0 auto" }}>
+            You Must unlock this photoset to view its content!
+          </span>
+          <Button
+            style={{ width: "fit-content", margin: "0 auto" }}
+            variant="contained"
+            color="secondary"
+          >
+            Unlock Photoset
+          </Button>
+        </Container>
+      )}
     </>
   );
 };
