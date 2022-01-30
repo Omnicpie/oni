@@ -19,4 +19,6 @@ export const PHOTOSETS = [
 export const MY_PHOTOSETS = [
   { id: 1, text: "Police, Camera, Action", models: [3, 4, 9] },
   { id: 4, text: "Egg", models: [2] },
+  { id: 6, text: "Femly Matters", models: [1, 10] },
+  { id: 3, text: "Boss's Orders ", models: [1] },
 ];

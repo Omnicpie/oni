@@ -83,17 +83,29 @@ function App() {
   });
   const [roles, setRoles] = useState(["admin", "model"]);
   const [mode, setMode] = useState(PREFER_DARK ? "dark" : "light");
+  const [allowScroll, setAllowScroll] = useState(true);
 
   return (
     <ThemeProvider theme={themes[mode]}>
       <CssBaseline />
       <Router basename="/">
         <Left roles={roles} mode={mode} />
-        <div className="container">
+        <div
+          className="container"
+          style={
+            allowScroll
+              ? {}
+              : { height: "97vh", overflowY: "hidden", display: "block" }
+          }
+        >
           <Routes>
             <Route exact index path={"/"} element={<Home />} />
             <Route exact path={"/photosets"} element={<Photosets />} />
-            <Route exact path={"/photosets/:id"} element={<Photoset />} />
+            <Route
+              exact
+              path={"/photosets/:id"}
+              element={<Photoset setAllowScroll={setAllowScroll} />}
+            />
             <Route exact path={"/models"} element={<Models />} />
             <Route exact path={"/models/:id"} element={<Model />} />
             <Route exact path={"/merch"} element={<Merch />} />

@@ -88,7 +88,7 @@ function srcset(image, size, rows = 1, cols = 1) {
   };
 }
 
-const Photoset = () => {
+const Photoset = ({ setAllowScroll }) => {
   const [set, setSet] = useState();
   const [open, setOpen] = useState(-1);
   const [owned, setOwned] = useState(false);
@@ -104,10 +104,15 @@ const Photoset = () => {
     );
   }, [params.id]);
 
+  useEffect(() => {
+    if (!owned) setAllowScroll(false);
+    return () => setAllowScroll(true);
+  }, [owned]);
+
   return (
     <>
       <ImageModal imageIndex={open} setOpen={setOpen} set={itemData} />
-      <Card sx={{ background: "rgba(1,1,1,0.03)" }}>
+      <Card sx={{ background: "rgba(1,1,1,0.03)", minHeight: "300px" }}>
         <CardMedia
           component="img"
           image={set?.image ? set?.image : defaultCardImage}
@@ -141,30 +146,46 @@ const Photoset = () => {
         )}
       </Card>
       <ImageList
-        sx={{ margin: "100px", marginBottom: "0" }}
+        sx={{ margin: "100px", marginBottom: "0", overflowY: "hidden" }}
         variant="quilted"
         cols={4}
         rowHeight={ROW_HEIGHT}
       >
-        {owned ? (
-          itemData?.map((item, index) => (
-            <ImageListItem
-              key={item.img}
-              cols={item.cols || 1}
-              rows={item.rows || 1}
-            >
-              <img
-                {...srcset(item.img, ROW_HEIGHT, item.rows, item.cols)}
-                alt={item.title}
-                loading="lazy"
-                onClick={() => setOpen(index)}
-                style={{ cursor: "pointer", opacity: "0.2" }}
-              />
-            </ImageListItem>
-          ))
-        ) : (
-          <>You Must own this content to view!</>
-        )}
+        {owned
+          ? itemData?.map((item, index) => (
+              <ImageListItem
+                key={item.img}
+                cols={item.cols || 1}
+                rows={item.rows || 1}
+              >
+                <img
+                  {...srcset(item.img, ROW_HEIGHT, item.rows, item.cols)}
+                  alt={item.title}
+                  loading="lazy"
+                  onClick={() => setOpen(index)}
+                  style={{
+                    cursor: "pointer",
+                  }}
+                />
+              </ImageListItem>
+            ))
+          : itemData?.map((item, index) => (
+              <ImageListItem
+                key={item.img}
+                cols={item.cols || 1}
+                rows={item.rows || 1}
+                sx={{ overflow: "hidden" }}
+              >
+                <img
+                  {...srcset(item.img, ROW_HEIGHT, item.rows, item.cols)}
+                  alt={item.title}
+                  loading="lazy"
+                  style={{
+                    filter: "blur(30px)",
+                  }}
+                />
+              </ImageListItem>
+            ))}
       </ImageList>
     </>
   );
