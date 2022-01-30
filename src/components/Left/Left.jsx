@@ -9,6 +9,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ImageIcon from "@mui/icons-material/Image";
 import ListSubheader from "@mui/material/ListSubheader";
 import logo from "../../images/OniFans.png";
+import darkLogo from "../../images/OniFansDark.png";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
 import { Avatar, ListItemAvatar } from "@mui/material";
@@ -16,7 +17,7 @@ import defaultCardImage from "../../images/nopixel.png";
 
 const drawerWidth = 240;
 
-export default function Left({ roles }) {
+export default function Left({ roles, mode }) {
   return (
     <Drawer
       sx={{
@@ -31,7 +32,7 @@ export default function Left({ roles }) {
       anchor="left"
     >
       <img
-        src={logo}
+        src={mode === "light" ? logo : darkLogo}
         alt="OniFans Logo"
         style={{ height: "50px", width: "auto", margin: "10px auto" }}
       ></img>

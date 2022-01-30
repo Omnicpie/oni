@@ -4,8 +4,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import { Container, Divider, Typography } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
-const Profile = ({ roles, setRoles }) => {
+const Profile = ({ mode, setMode, roles, setRoles }) => {
   return (
     <>
       <Typography variant="h3" sx={{ margin: "30px" }}>
@@ -70,6 +73,23 @@ const Profile = ({ roles, setRoles }) => {
             />
           </ListItem>
         </List>
+      </Container>
+      <Divider sx={{ margin: "30px" }} />
+      <Container>
+        <ListSubheader component="div" id="tags">
+          Select Color Theme
+        </ListSubheader>
+        <IconButton
+          sx={{ ml: 1 }}
+          onClick={() => {
+            mode === "dark" ? setMode("light") : setMode("dark");
+          }}
+          color="inherit"
+        >
+          {mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+        </IconButton>
+        Currently:{" "}
+        {mode === "dark" ? <span>dark mode</span> : <span>light mode</span>}
       </Container>
     </>
   );
