@@ -91,6 +91,16 @@ const Profile = ({ mode, setMode, roles, setRoles }) => {
         Currently:{" "}
         {mode === "dark" ? <span>dark mode</span> : <span>light mode</span>}
       </Container>
+      <span
+        style={{
+          fontSize: "9px",
+          marginLeft: "30px",
+          position: "absolute",
+          bottom: "10px",
+        }}
+      >
+        Version: 1.5
+      </span>
     </>
   );
 };
