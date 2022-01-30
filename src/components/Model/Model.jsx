@@ -95,12 +95,19 @@ const Model = () => {
       <Card sx={{ background: "rgba(1,1,1,0.03)" }}>
         <CardMedia
           component="img"
-          image={set?.image ? set?.image : defaultCardImage}
+          image={set?.banner ? set?.banner : defaultCardImage}
           sx={{ objectFit: "contain", maxHeight: "160pt" }}
         />
-        <Avatar
-          sx={{ height: 100, width: 100, transform: "translate(10%, -50%)" }}
-        />
+        {set?.profilePic ? (
+          <Avatar
+            src={set?.profilePic}
+            sx={{ height: 100, width: 100, transform: "translate(10%, -50%)" }}
+          />
+        ) : (
+          <Avatar
+            sx={{ height: 100, width: 100, transform: "translate(10%, -50%)" }}
+          />
+        )}
         <Typography
           variant="h3"
           style={{
