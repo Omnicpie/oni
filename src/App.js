@@ -107,7 +107,7 @@ function App() {
               element={<Photoset setAllowScroll={setAllowScroll} />}
             />
             <Route exact path={"/models"} element={<Models />} />
-            <Route exact path={"/models/:id"} element={<Model />} />
+            <Route exact path={"/models/:id"} element={<Model mode={mode} />} />
             <Route exact path={"/merch"} element={<Merch />} />
             <Route
               exact

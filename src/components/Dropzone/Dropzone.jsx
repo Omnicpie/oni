@@ -1,3 +1,4 @@
+import { Delete, RemoveCircle } from "@mui/icons-material";
 import React, { useEffect, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 
@@ -37,10 +38,25 @@ const baseStyle = {
   flexDirection: "column",
   alignItems: "center",
   padding: "20px",
-  borderWidth: 2,
-  borderRadius: 2,
-  borderColor: "#eeeeee",
-  borderStyle: "dashed",
+  borderWidth: 1,
+  borderRadius: 4,
+  borderColor: "rgba(255, 255, 255, 0.23)",
+  borderStyle: "solid",
+  color: "#bdbdbd",
+  outline: "none",
+  transition: "border .24s ease-in-out",
+};
+
+const baseStyleLight = {
+  flex: 1,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "20px",
+  borderWidth: 1,
+  borderRadius: 4,
+  borderColor: "rgba(0, 0, 0, 0.23)",
+  borderStyle: "solid",
   color: "#bdbdbd",
   outline: "none",
   transition: "border .24s ease-in-out",
@@ -48,6 +64,12 @@ const baseStyle = {
 
 const focusedStyle = {
   borderColor: "#2196f3",
+  borderWidth: 2,
+};
+
+const focusedStyleLight = {
+  borderColor: "#1976d2",
+  borderWidth: 2,
 };
 
 const acceptStyle = {
@@ -58,28 +80,41 @@ const rejectStyle = {
   borderColor: "#ff1744",
 };
 
-function Dropzone({ files, setFiles }) {
+function Dropzone({ files, setFiles, mode }) {
   const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
     useDropzone({
       accept: "image/*",
       onDrop: (acceptedFiles) => {
         setFiles(
-          acceptedFiles.map((file) =>
-            Object.assign(file, {
-              preview: URL.createObjectURL(file),
-            })
+          files.concat(
+            acceptedFiles.map((file) =>
+              Object.assign(file, {
+                preview: URL.createObjectURL(file),
+              })
+            )
           )
         );
       },
     });
 
-  const thumbs = files.map((file) => (
-    <div style={thumb} key={file.name}>
-      <div style={thumbInner}>
-        <img src={file.preview} style={img} alt={file.name} />
+  const thumbs = files.map((file, index) => {
+    console.log(file.preview);
+    return (
+      <div style={thumb} key={index + "AD" + file.name}>
+        <div style={thumbInner}>
+          <RemoveCircle
+            sx={{
+              position: "absolute",
+              transform: "translate(-50%, -50%)",
+              color: "#b71c1c !important",
+            }}
+            onClick={() => setFiles(files.filter((_, i) => i !== index))}
+          />
+          <img src={file.preview} style={img} alt={file.name} />
+        </div>
       </div>
-    </div>
-  ));
+    );
+  });
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks
@@ -87,24 +122,28 @@ function Dropzone({ files, setFiles }) {
   }, [files]);
   const style = useMemo(
     () => ({
-      ...baseStyle,
-      ...(isFocused ? focusedStyle : {}),
+      ...(mode === "dark" ? baseStyle : baseStyleLight),
+      ...(isFocused
+        ? mode === "dark"
+          ? focusedStyle
+          : focusedStyleLight
+        : {}),
       ...(isDragAccept ? acceptStyle : {}),
       ...(isDragReject ? rejectStyle : {}),
     }),
-    [isFocused, isDragAccept, isDragReject]
+    [isFocused, isDragAccept, isDragReject, mode]
   );
 
   return (
-    <section
-      style={{
-        background: "rgba(1,1,1,0.03)",
-        padding: "10px",
-      }}
-    >
-      <div {...getRootProps({ className: "dropzone", style })}>
+    <section>
+      <div
+        {...getRootProps({
+          className: mode === "dark" ? "dropzone" : "dropzone-light",
+          style,
+        })}
+      >
         <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
+        <p>Drag 'n' drop some images or click to add</p>
       </div>
       <aside style={thumbsContainer}>{thumbs}</aside>
     </section>

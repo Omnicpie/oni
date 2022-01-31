@@ -76,7 +76,7 @@ const itemData = [
   },
 ];
 
-const Model = () => {
+const Model = ({ mode }) => {
   const [set, setSet] = useState();
   const [open, setOpen] = useState(-1);
   const [openNewSet, setOpenNewSet] = useState(false);
@@ -94,7 +94,9 @@ const Model = () => {
   return (
     <>
       <ImageModal imageIndex={open} setOpen={setOpen} set={itemData} />
-      <NewSet open={openNewSet} setOpen={setOpenNewSet} />
+      {openNewSet && (
+        <NewSet open={openNewSet} setOpen={setOpenNewSet} mode={mode} />
+      )}
       <Card sx={{ background: "rgba(1,1,1,0.03)" }}>
         <CardMedia
           component="img"

@@ -75,3 +75,10 @@
 .ahhact p {
   color: red !important;
 }
+
+.dropzone:hover {
+  border-color: rgba(255, 255, 255) !important ;
+}
+.dropzone-light:hover {
+  border-color: rgba(1, 1, 1) !important ;
+}
