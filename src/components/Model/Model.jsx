@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 import Photosets from "./subComponents/Photosets/Photosets";
 import Merch from "./subComponents/Merch/Merch";
 import { Button } from "@mui/material";
+import NewSet from "../NewSet/NewSet";
 
 const itemData = [
   {
@@ -78,6 +79,7 @@ const itemData = [
 const Model = () => {
   const [set, setSet] = useState();
   const [open, setOpen] = useState(-1);
+  const [openNewSet, setOpenNewSet] = useState(false);
   const [value, setValue] = useState("1");
   let params = useParams();
 
@@ -92,6 +94,7 @@ const Model = () => {
   return (
     <>
       <ImageModal imageIndex={open} setOpen={setOpen} set={itemData} />
+      <NewSet open={openNewSet} setOpen={setOpenNewSet} />
       <Card sx={{ background: "rgba(1,1,1,0.03)" }}>
         <CardMedia
           component="img"
@@ -136,6 +139,7 @@ const Model = () => {
                 variant="contained"
                 color="secondary"
                 sx={{ display: "block", marginBottom: "10px" }}
+                onClick={() => setOpenNewSet(true)}
               >
                 Add Set
               </Button>
