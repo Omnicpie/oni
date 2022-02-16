@@ -3,8 +3,14 @@ import Modal from "@mui/material/Modal";
 import Dropzone from "../Dropzone/Dropzone";
 import Backdrop from "@mui/material/Backdrop";
 import Fade from "@mui/material/Fade";
-import { Close } from "@mui/icons-material";
-import { Box, Typography, TextField, Alert, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Alert,
+  Button,
+  Divider,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
@@ -14,6 +20,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
+import { MODELS } from "../../__constants__/models";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -33,25 +40,11 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 625,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
   maxHeight: "100vh",
-  overflowY: "scroll",
+  overflowY: "auto",
 };
-
-const names = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
-];
 
 function getStyles(name, personName, theme) {
   return {
@@ -91,15 +84,6 @@ const NewSet = ({ open, setOpen, mode }) => {
     >
       <Fade in={open}>
         <div>
-          <Close
-            onClick={() => setOpen(-1)}
-            sx={{
-              position: "fixed",
-              top: "1%",
-              right: "1%",
-              fontSize: "2.5rem",
-            }}
-          />
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Create a new photoset
@@ -138,26 +122,36 @@ const NewSet = ({ open, setOpen, mode }) => {
                 MenuProps={MenuProps}
                 sx={{ marginBottom: "20px" }}
               >
-                {names.map((name) => (
+                {MODELS.map((name) => (
                   <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, personName, theme)}
+                    key={name.id}
+                    value={name.text}
+                    style={getStyles(name.text, personName, theme)}
                   >
-                    <Checkbox checked={personName.indexOf(name) > -1} />
-                    <ListItemText primary={name} />
+                    <Checkbox checked={personName.indexOf(name.text) > -1} />
+                    <ListItemText primary={name.text} />
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
+            <Divider />
+            <Typography sx={{ marginY: "20px" }}>Upload Images</Typography>
             <Dropzone files={files} setFiles={setFiles} mode={mode} />
             <Alert severity="info">
-              NOTE: This does not actually work by choice the Submit button will
-              therefore do nothing
+              NOTE: The "Submit" button does nothing, this is because is system
+              is just a prototype and is intended.
             </Alert>
             <div style={{ marginTop: 20 }}>
-              <Button onClick={() => setOpen(false)}>Submit</Button>
-              <Button onClick={() => setOpen(false)}>Cancel</Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => setOpen(false)}
+              >
+                Submit
+              </Button>
+              <Button color="secondary" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
             </div>
           </Box>
         </div>
