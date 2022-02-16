@@ -17,6 +17,7 @@ import { MODELS } from "../../__constants__/models";
 import CardMedia from "@mui/material/CardMedia";
 import defaultCardImage from "../../images/nopixel.png";
 import "./Photoset.scss";
+import UnlockModal from "../UnlockModal/UnlockModal";
 
 const itemData = [
   {
@@ -94,6 +95,7 @@ const Photoset = ({ setAllowScroll, mode }) => {
   const [set, setSet] = useState();
   const [open, setOpen] = useState(-1);
   const [owned, setOwned] = useState(false);
+  const [openUnlock, setOpenUnlock] = useState(false);
   let params = useParams();
 
   useEffect(() => {
@@ -113,6 +115,9 @@ const Photoset = ({ setAllowScroll, mode }) => {
 
   return (
     <>
+      {openUnlock && (
+        <UnlockModal open={openUnlock} setOpen={setOpenUnlock} mode={mode} />
+      )}
       <ImageModal imageIndex={open} setOpen={setOpen} set={itemData} />
       <Card sx={{ background: "rgba(1,1,1,0.03)", minHeight: "300px" }}>
         <CardMedia
@@ -213,6 +218,7 @@ const Photoset = ({ setAllowScroll, mode }) => {
             style={{ width: "fit-content", margin: "0 auto" }}
             variant="contained"
             color="secondary"
+            onClick={() => setOpenUnlock(true)}
           >
             Unlock Photoset
           </Button>

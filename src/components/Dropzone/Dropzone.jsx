@@ -1,4 +1,4 @@
-import { Delete, RemoveCircle } from "@mui/icons-material";
+import { RemoveCircle } from "@mui/icons-material";
 import React, { useEffect, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 
